@@ -1,11 +1,21 @@
 pipeline {
+
     agent any
 
+
+
     stages {
-        stage('Hello') {
+
+        stage('Build') {
+
             steps {
-                echo 'hello duniya'
-            }
+
+                git 'https://github.com/Rahul-1999/AI-IMAGE-Generator.git'
+
+            }   
+
         }
+
     }
+
 }
