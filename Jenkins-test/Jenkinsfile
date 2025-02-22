@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        GIT_REPO = 'https://github.com/MayankSaxena23/AI-Image-Generator.git'
-        BRANCH = 'main'
-    }
+    // environment {
+    //     GIT_REPO = 'https://github.com/MayankSaxena23/AI-Image-Generator.git'
+    //     BRANCH = 'main'
+    // }
 
     stages {
         stage('Checkout Code') {
