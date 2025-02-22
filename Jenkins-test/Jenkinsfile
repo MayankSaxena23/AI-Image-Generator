@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Install Node.js tool with a specific version
-        NodeJs 'NodeJS_Latest'
+        nodejs 'NodeJS_Latest'
     }
     // environment {
     //     GIT_REPO = 'https://github.com/MayankSaxena23/AI-Image-Generator.git'
@@ -35,17 +35,17 @@ pipeline {
             }
         }
 
-        stage('Show Git Changes') {
-            steps {
-                script {
-                    echo "Recent Git Commits:"
-                    bat 'git log -3 --oneline'
+        // stage('Show Git Changes') {
+        //     steps {
+        //         script {
+        //             echo "Recent Git Commits:"
+        //             bat 'git log -3 --oneline'
                     
-                    echo "Changed Files in Last Commit:"
-                    bat 'git diff --name-only HEAD~1 HEAD'
-                }
-            }
-        }
+        //             echo "Changed Files in Last Commit:"
+        //             bat 'git diff --name-only HEAD~1 HEAD'
+        //         }
+        //     }
+        // }
     }
 
     post {
