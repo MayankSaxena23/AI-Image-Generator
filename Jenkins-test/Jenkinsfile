@@ -17,10 +17,10 @@ pipeline {
             steps {
                 script {
                     echo "Recent Git Commits:"
-                    sh 'git log -3 --oneline'
+                    bat 'git log -3 --oneline'
                     
                     echo "Changed Files in Last Commit:"
-                    sh 'git diff --name-only HEAD~1 HEAD'
+                    bat 'git diff --name-only HEAD~1 HEAD'
                 }
             }
         }
