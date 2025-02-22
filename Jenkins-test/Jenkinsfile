@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        // Install Node.js tool with a specific version
+        nodejs 'node:latest'
+    }
     // environment {
     //     GIT_REPO = 'https://github.com/MayankSaxena23/AI-Image-Generator.git'
     //     BRANCH = 'main'
@@ -10,6 +14,24 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: "${BRANCH}", url: "${GIT_REPO}"
+            }
+        }
+
+        stage('Install Client Dependencies') {
+            steps {
+                // Change to the client directory and install dependencies
+                dir('client') {
+                    bat 'npm install'
+                }
+            }
+        }
+
+        stage('Build Client') {
+            steps {
+                // Change to the client directory and run the build command
+                dir('client') {
+                    bat 'npm run build'
+                }
             }
         }
 
@@ -23,6 +45,15 @@ pipeline {
                     bat 'git diff --name-only HEAD~1 HEAD'
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
